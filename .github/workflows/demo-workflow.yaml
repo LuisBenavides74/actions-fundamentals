@@ -1,0 +1,21 @@
+# this is my first workflow
+
+name: My first Demo worfklow
+
+on:
+  workflow_dispatch: 
+    inputs:
+      who-to-greet:
+        type: string
+        required: true
+
+jobs:
+  hello:
+    runs-on: ubutnu-latest
+    name: My Hello Job
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v6.1.0
+      - name: Greet someone
+        shell: bash
+        run: echo "hello ${{ github.event.inputs.who-to-greet }}"
